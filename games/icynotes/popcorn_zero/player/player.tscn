@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://games/icynotes/popcorn_zero/player/Burst.gd" type="Script" id=1]
+[ext_resource path="res://games/icynotes/popcorn_zero/player/Body.gd" type="Script" id=2]
+[ext_resource path="res://games/icynotes/popcorn_zero/player/AimLine.gd" type="Script" id=3]
+[ext_resource path="res://games/icynotes/popcorn_zero/player/AimIndicator.gd" type="Script" id=4]
+[ext_resource path="res://games/icynotes/popcorn_zero/player/player.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.0
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Body" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Burst" type="Node2D" parent="Body"]
+script = ExtResource( 1 )
+
+[node name="AimIndicator" type="Node2D" parent="Body"]
+script = ExtResource( 4 )
+
+[node name="AimLine" type="Node2D" parent="Body/AimIndicator"]
+script = ExtResource( 3 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 1 )
